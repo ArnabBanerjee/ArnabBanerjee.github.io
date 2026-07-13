@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg:        #020617;   /* slate-950 */
+  --color-surface:   #0f172a;   /* slate-900 */
+  --color-card:      #1e293b;   /* slate-800 */
+  --color-border:    #334155;   /* slate-700 */
+  --color-accent:    #38bdf8;   /* sky-400   */
+  --color-accent2:   #3b82f6;   /* blue-500  */
+  --color-text:      #f1f5f9;   /* slate-100 */
+  --color-muted:     #94a3b8;   /* slate-400 */
+  --nav-height:      64px;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* Offset anchor targets so sticky nav doesn't cover them */
+section[id] {
+  scroll-margin-top: var(--nav-height);
+}
+
+/* Metric number highlight used inside Experience bullets */
+.highlight {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* Scroll progress bar at top of page */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent2));
+  z-index: 100;
+  transform-origin: left center;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+
+/* Nav logo swap animations */
+@keyframes logoSlideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes logoFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Nav animated gradient border */
+@keyframes navBorderShift {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.nav-accent-border {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-accent) 30%,
+    var(--color-accent2) 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: navBorderShift 4s linear infinite;
+}
+
+/* Nav CTA shine sweep */
+@keyframes shineSweep {
+  from { transform: translateX(-120%) skewX(-12deg); }
+  to   { transform: translateX(220%)  skewX(-12deg); }
+}
+.cta-shine:hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.18);
+  animation: shineSweep 0.55s ease forwards;
+}
+
+/* Subtle scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
