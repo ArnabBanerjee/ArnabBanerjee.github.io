@@ -87,10 +87,10 @@ export default function Skills() {
 
         {/* ── Mobile / tablet: animation above, 2-col grid below ── */}
         <div class="lg:hidden">
-          <div class="flex justify-center mb-6">
+          <div class="hidden lg:flex justify-center mb-6">
             <LottiePlayer
               src={WebDev0Url}
-              class="w-full max-w-[200px] sm:max-w-xs aspect-square drop-shadow-[0_0_48px_rgba(56,189,248,0.12)]"
+              class="w-128 h-128 aspect-square drop-shadow-[0_0_48px_rgba(56,189,248,0.12)]"
             />
           </div>
           <div class="grid sm:grid-cols-2 gap-5">
